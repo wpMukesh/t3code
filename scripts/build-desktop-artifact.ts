@@ -1434,7 +1434,7 @@ export const createBuildConfig = Effect.fn("createBuildConfig")(function* (
 
   if (platform === "linux") {
     buildConfig.linux = {
-      target: [target],
+      target: target === "AppImage" ? [target, "tar.gz"] : [target],
       executableName: "t3code",
       icon: "icons",
       category: "Development",
@@ -1920,7 +1920,7 @@ const buildDesktopArtifactCli = Command.make("build-desktop-artifact", {
   ),
   target: Flag.string("target").pipe(
     Flag.withDescription(
-      "Artifact target, for example dmg/AppImage/nsis (env: T3CODE_DESKTOP_TARGET).",
+      "Artifact target, for example dmg/AppImage/tar.gz/nsis (env: T3CODE_DESKTOP_TARGET).",
     ),
     Flag.optional,
   ),

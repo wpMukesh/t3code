@@ -571,6 +571,7 @@ jobs:
             "release/*.dmg" \
             "release/*.zip" \
             "release/*.AppImage" \
+            "release/*.tar.gz" \
             "release/*.exe" \
             "release/*.blockmap" \
             "release/*.yml"; do
@@ -753,6 +754,7 @@ jobs:
             release-assets/*.dmg
             release-assets/*.zip
             release-assets/*.AppImage
+            release-assets/*.tar.gz
             release-assets/*.exe
             release-assets/*.blockmap
             release-assets/*.yml
@@ -773,6 +775,7 @@ jobs:
             release-assets/*.dmg
             release-assets/*.zip
             release-assets/*.AppImage
+            release-assets/*.tar.gz
             release-assets/*.exe
             release-assets/*.blockmap
             release-assets/*.yml

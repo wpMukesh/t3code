@@ -43,6 +43,13 @@ brew install --cask t3-code
 yay -S t3code-bin
 ```
 
+#### Linux tarball (including Void Linux)
+
+Download `T3-Code-<version>-x64.tar.gz` from
+[GitHub Releases](https://github.com/pingdotgg/t3code/releases), extract it, and run the included
+`t3code` executable. The portable build requires a glibc-based Linux installation and does not
+support automatic updates.
+
 ## Some notes
 
 We are very very early in this project. Expect bugs.

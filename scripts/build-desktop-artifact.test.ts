@@ -492,6 +492,35 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
     }).pipe(Effect.provide(ConfigProvider.layer(ConfigProvider.fromEnv({ env: {} })))),
   );
 
+  it.effect("adds a portable tarball to Linux AppImage builds", () =>
+    Effect.gen(function* () {
+      const releaseConfig = yield* createBuildConfig(
+        "linux",
+        "AppImage",
+        "1.2.3",
+        false,
+        false,
+        undefined,
+        undefined,
+      );
+      const tarballConfig = yield* createBuildConfig(
+        "linux",
+        "tar.gz",
+        "1.2.3",
+        false,
+        false,
+        undefined,
+        undefined,
+      );
+
+      assert.deepStrictEqual((releaseConfig.linux as Record<string, unknown>).target, [
+        "AppImage",
+        "tar.gz",
+      ]);
+      assert.deepStrictEqual((tarballConfig.linux as Record<string, unknown>).target, ["tar.gz"]);
+    }).pipe(Effect.provide(ConfigProvider.layer(ConfigProvider.fromEnv({ env: {} })))),
+  );
+
   it("promotes target fff binaries to direct staged dependencies", () => {
     assert.deepStrictEqual(resolveFffNativeDependencies("mac", "arm64", "0.9.4"), {
       "@ff-labs/fff-bin-darwin-arm64": "0.9.4",
